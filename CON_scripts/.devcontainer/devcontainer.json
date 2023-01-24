@@ -1,0 +1,47 @@
+{
+	// A name for the dev container displayed in VS Code UI
+	"name": "CON_scripts",
+
+	"build": {
+		// Path of the Dockerfile relative to devcontainer.json
+		"dockerfile": "Dockerfile"
+	},
+
+	// Upon starting, let me know if there is any outdated package.
+	//"postStartCommand": "python -m pip list --outdated",
+
+	"customizations": {
+		// Extensions to install in VS Code within container
+		"vscode": {
+			"extensions": [
+				"ms-python.python"
+			]
+		}
+	},
+
+	// You may want to disable the following settings on formatting
+	"settings": {
+		// enable linting using pylint
+		"python.linting.enabled": true,
+		"python.linting.lintOnSave": true,
+		
+		// Pylance
+		"python.languageServer": "Pylance",
+		// enable auto completion for functions
+		"python.analysis.completeFunctionParens": true,
+
+		// settings for black
+		"python.formatting.provider": "black",
+		"python.formatting.blackArgs": [
+			"--line-length=79"  // 79 or 120?
+		],
+
+		"[python]": {
+			"editor.codeActionsOnSave": {
+				// run isort upon saving a file
+				"source.organizeImports": true
+			},
+			"editor.formatOnSave": true
+		}
+	}
+}
